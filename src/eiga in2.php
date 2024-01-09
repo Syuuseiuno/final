@@ -1,8 +1,8 @@
 <?php
-const SERVER ="mysql218.phy.lolipop.lan";
-const DBNAME ="LAA1517813-asoateam";
+const SERVER ="mysql220.phy.lolipop.lan";
+const DBNAME ="LAA1517813-final";
 const USER ="LAA1517813";
-const PASS ="Pasuwado";
+const PASS ="aso2201126";
 
 $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 ?>
@@ -17,7 +17,7 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 	<body>
 <?php
     $pdo=new PDO($connect, USER, PASS);
-    $sql=$pdo->prepare('delete from eiga where shohin_id=?');
+    $sql=$pdo->prepare('delete from insyoku where tenpo_id=?');
     if ($sql->execute([$_GET['id']])) {
         echo '削除に成功しました。';
     } else{
@@ -32,20 +32,18 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
     </tr>
 
 <?php
-foreach ($pdo->query('select * from eiga') as $row) {
+foreach ($pdo->query('select * from insyoku') as $row) {
     echo '<tr>';
-    echo'<td>', $row['shohin_id'], '</td>';
-        echo '<td>', $row['shohin_mei'], '</td>';
-        echo '<td>', $row['image'], '</td>';
-        echo '<td>', $row['time'], '</td>';
-        echo '<td>', $row['explanation'], '</td>';
-        echo '<td>', $row['genre'], '</td>';
-        echo '<td>', $row['price'], '</td>';
+    echo '<td>', $row['tenpo_id'], '</td>';
+    echo '<td>', $row['tenpo_name'], '</td>';
+    echo '<td>', $row['place'], '</td>';
+    echo '<td>', $row['categori'], '</td>';
+    echo '<td>', $row['osusume'], '</td>';
     echo '</tr>';
     echo "\n";
 }
 ?>
         </table>
-        <button onclick="location.href='eiga in1.php'">商品一覧画面へ戻る</button>
+        <button onclick="location.href='eigain1.php'">商品一覧画面へ戻る</button>
     </body>
 </html>

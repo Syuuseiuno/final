@@ -1,8 +1,9 @@
 <?php
-const SERVER ="mysql218.phy.lolipop.lan";
-const DBNAME ="LAA1517813-asoateam";
+const SERVER ="mysql220.phy.lolipop.lan";
+const DBNAME ="LAA1517813-final";
 const USER ="LAA1517813";
-const PASS ="Pasuwado";
+const PASS ="aso2201126";
+
 
 $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 ?>
@@ -15,49 +16,40 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 	<body>
 <?php
     $pdo=new PDO($connect, USER, PASS);
-	$sql=$pdo->prepare('select * from eiga where shohin_id=?');
+	$sql=$pdo->prepare('select * from insyoku where tenpo_id=?');
     $sql->execute([$_GET['id']]);
 	foreach ($sql as $row) {
     
 		echo '<form action="eiga in4.php" method="post">';
 
 
-    	echo"商品番号";
-		echo '<input type="text"  name="id" value="', $row['shohin_id'], '"><br>';
+    	echo"店舗番号";
+		echo '<input type="text"  name="id" value="', $row['tenpo_id'], '"><br>';
 
 
-		echo"映画名";
-		echo '<input type="text" name="eimei" value="', $row['shohin_mei'], '"><br>';
+		echo"店舗名";
+		echo '<input type="text" name="eimei" value="', $row['tenpo_name'], '"><br>';
 
 
-		echo"映画画像";
-		echo '<textarea name="eigapasu"  style="width: 1000px;px" cols="800" rows="5" maxlength="800" value="', $row['image'],'"></textarea><br>';
+		echo"場所";
+		echo '<input type="text" name="eigapasu"  value="', $row['place'],'"><br>';
 
 
-		echo"時間";
-		echo ' <input type="text" name="zikan" value="', $row['time'], '"><br>';
+		echo"系統";
+		echo ' <input type="text" name="zikan" value="', $row['categori'], '"><br>';
 
 
-		echo"詳細";
-		echo '<textarea name="syousai"  style="width: 1000px;px" cols="800" rows="5" maxlength="800" value="', $row['explanation'],'"></textarea><br>';
-
-
-		echo"ジャンル";
-		echo '<input type="text" name="zyanru" value="', $row['genre'], '"><br>';
-
-
-		echo"商品価格";
-		echo '<input type="text" name="price" value="', $row['price'], '"><br>';
+		echo"おすすめ";
+		echo '<input type="text" name="zyanru" value="', $row['osusume'], '"><br>';
 		
 
-		
 		echo "\n";
 		echo '<input type="submit" value="更新">';
 		echo '</form>';
 	}
 ?>
 </table>
-<button onclick="location.href='eiga in1.php'">トップへ戻る</button>
+<button onclick="location.href='eigain1.php'">トップへ戻る</button>
     </body>
 </html>
 
