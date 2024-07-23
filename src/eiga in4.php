@@ -11,16 +11,28 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/in1.css">
 		<title>更新確定</title>
 	</head>
 	<body>
 <?php
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('update insyoku set tenpo_name=?,place=?,categori=?,osusume=? where tenpo_id=?');
-    if (empty($_POST['shohin_mei'])) {
+    if (empty($_POST['tenpo_name'])) {
         echo '商品名を入力してください。';
     } else
     
+    if (empty($_POST['place'])) {
+        echo '場所を入力してください。';
+    } else
+
+    if (empty($_POST['categori'])) {
+        echo '系統を入力してください。';
+    } else
+    if (empty($_POST['osusume'])) {
+        echo 'おすすめを入力してください。';
+    } else
+
     if($sql->execute([htmlspecialchars($_POST["tenpo_name"]),$_POST["place"],$_POST["categori"],$_POST["osusume"],$_POST["tenpo_id"]])){
         echo"更新に成功しました";
     }else{
@@ -48,7 +60,9 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 ?>
 
         </table>
-        <button onclick="location.href='eigain1.php'">商品一覧画面へ戻る</button>
+        <a href="eigain1.php" class="btn-flat-simple">
+  <i class="fa fa-caret-right"></i>商品一覧画面へ戻る
+</a>
     </body>
 </html>
 

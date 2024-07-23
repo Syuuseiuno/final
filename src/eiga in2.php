@@ -11,6 +11,7 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/in1.css">
 		<title>削除
         </title>
 	</head>
@@ -28,7 +29,7 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
         <hr>
         <table border='1'>
         <tr>
-            <th>商品番号</th><th>映画名</th><th>映画画像</th><th>時間</th><th>詳細</th><th>ジャンル</th><th>商品価格</th>
+        <th>店舗番号</th><th>店舗名</th><th>場所</th><th>系統</th><th>おすすめ</th>
     </tr>
 
 <?php
@@ -44,6 +45,8 @@ foreach ($pdo->query('select * from insyoku') as $row) {
 }
 ?>
         </table>
-        <button onclick="location.href='eigain1.php'">商品一覧画面へ戻る</button>
+        <a href="eigain1.php" class="btn-flat-simple">
+  <i class="fa fa-caret-right"></i>商品一覧画面へ戻る
+</a>
     </body>
 </html>

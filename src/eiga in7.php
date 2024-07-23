@@ -11,13 +11,29 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/in1.css">
     <title>追加確定</title>
 </head>
 <body>
   <?php  
     $pdo = new PDO($connect, USER, PASS);
-    $sql=$pdo->prepare("insert into insyoku(shohin_id,shohin_mei,explanation,genre,price)values(?,?,?,?,?)");
-    if($sql->execute([$_POST["shohin_id"],$_POST["shohin_mei"],$_POST["image"],$_POST["time"],$_POST["explanation"],$_POST["genre"],$_POST["price"]])){
+    $sql=$pdo->prepare("insert into insyoku(tenpo_id,tenpo_name,place,categori,osusume)values(?,?,?,?,?)");
+    if (empty($_POST['tenpo_name'])) {
+        echo '商品名を入力してください。';
+    } else
+    
+    if (empty($_POST['place'])) {
+        echo '場所を入力してください。';
+    } else
+
+    if (empty($_POST['categori'])) {
+        echo '系統を入力してください。';
+    } else
+    if (empty($_POST['osusume'])) {
+        echo 'おすすめを入力してください。';
+    } else
+
+    if($sql->execute([$_POST["tenpo_id"],$_POST["tenpo_name"],$_POST["place"],$_POST["categori"],$_POST["osusume"]])){
         echo "<font color='red'>追加に成功しました。</font>";
     }else{
         echo "<font color='red'>追加に失敗しました。</font>";
@@ -26,7 +42,7 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 <br><hr><br>
 <table border='1'>
 <tr>
-<th>商品番号</th><th>映画名</th><th>映画画像</th><th>時間</th><th>詳細</th><th>ジャンル</th><th>商品価格</th>
+<th>店舗番号</th><th>店舗名</th><th>場所</th><th>系統</th><th>おすすめ</th>
 </tr>
 <?php
  foreach ($pdo->query('select * from insyoku') as $row) {

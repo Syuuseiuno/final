@@ -10,12 +10,15 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/in1.css">
 		<title>店舗一覧</title>
 	</head>
 	<body>
         <h1>店舗一覧</h1>
         <hr>
-        <button onclick="location.href='eiga in5.php'">商品を登録する</button>
+        <a href="eiga in5.php" class="btn-flat-simple">
+  <i class="fa fa-caret-right"></i>商品を登録する
+</a>
         <table border='1'>
     <tr>
     <th>店舗番号</th><th>店舗名</th><th>場所</th><th>系統</th><th>おすすめ</th><th>削除</th><th>編集</th>

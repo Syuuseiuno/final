@@ -11,6 +11,7 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../css/in1.css">
 		<title>更新</title>
 	</head>
 	<body>
@@ -24,23 +25,23 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 
 
     	echo"店舗番号";
-		echo '<input type="text"  name="id" value="', $row['tenpo_id'], '"><br>';
+		echo '<input type="hidden"  name="tenpo_id" value="', $row['tenpo_id'], '"><br>';
 
 
 		echo"店舗名";
-		echo '<input type="text" name="eimei" value="', $row['tenpo_name'], '"><br>';
+		echo '<input type="text" name="tenpo_name" value="', $row['tenpo_name'], '"><br>';
 
 
 		echo"場所";
-		echo '<input type="text" name="eigapasu"  value="', $row['place'],'"><br>';
+		echo '<input type="text" style="width: 500px;px" name="place"  value="', $row['place'],'"><br>';
 
 
 		echo"系統";
-		echo ' <input type="text" name="zikan" value="', $row['categori'], '"><br>';
+		echo ' <input type="text" name="categori" value="', $row['categori'], '"><br>';
 
 
 		echo"おすすめ";
-		echo '<input type="text" name="zyanru" value="', $row['osusume'], '"><br>';
+		echo '<input type="text" name="osusume" value="', $row['osusume'], '"><br>';
 		
 
 		echo "\n";
@@ -49,7 +50,9 @@ $connect= 'mysql:host='.SERVER.';dbname='.DBNAME.';charset=utf8';
 	}
 ?>
 </table>
-<button onclick="location.href='eigain1.php'">トップへ戻る</button>
+<a href="eigain1.php" class="btn-flat-simple">
+  <i class="fa fa-caret-right"></i>トップへ戻る
+</a>
     </body>
 </html>
 
